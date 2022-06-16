@@ -8,16 +8,219 @@
 
     <body>
 
-        <!--Selectors refer to the HTML elements to which CSS rules apply, they are what is actually being "selected" for each
-        rule. The universal selector will select elements of any type, and the syntac for it is a simple asterisk.-->
-            <div class="text">
-                <P>Hello World</P>
+        <!-- <div> is the most simple selector that applies to css-->
+            <div>
+        <!-- Selectors simply refer to HTML elements which CSS rules apply to. In this case, the selectors is universal, which
+            means this CSS rules will apply to any HTML element that's inside <div>-->
+                Universal Selectors
             </div>
+        <!-- To edit a style for the HTML elements, <style> is used to write the CSS rules that is being applied-->
             <style>
-                .text{
+        /* Universal selectors will apply this CSS rules to all HTML elements, hence the name universal. This CSS rules is applied
+            with an asterisk below */
+                * {
                     color: red;
+        /* CSS rules are written as "cssrule: element" */
                 }
             </style>
+        <!-- Even if an HTML elements is not in the <div> will have the universal selector added to them, as seen below-->
+            <p>Is this text also red?</p>
+
+
+
+        <!-- A type selector will select element of the given elements type, and the syntax is just the name of the element. In
+            this case, everything in the <div> is a type selector, however since the universal selector applies to all HTML, the
+            text will be red-->
+        <div>
+                Type selectors
+        </div>
+
+        <style>
+        /* This selectors will apply to any elements that is with the <div> element type. This can also work on elements such as
+            <p> or <h1> */
+            div {
+                background-color: blue;
+            }
+            p {
+                background-color: black;
+            }
+        </style>
+
+
+
+        <!-- Class selectors will slelect all elements with the given class, which is just an attribute you place on an HTML element. In this
+            case below, the class selected is called "class-selector", and it is selected by 'class=' -->
+        <div class="class-selector">
+            This is a class selector
+        </div>
+
+        <!-- You can add multiple classes to a single element as a space-serperated list. Forexample the element below carries the class
+            of "class-selector" and "selector-example" and is seperated by a space-->
+        <div class="class-selector selector-example">
+            An example of multiple classes
+        </div>
+
+        <style>
+        /* In this case, the CSS rule below will only apply to the "class-selector", and the syntax for this is a preiod immediately followed by
+            the case sensitive value of the class attribute. */
+            .class-selector{
+                background-color: white;
+                color: blue;
+            }
+            .selector-example{
+                background-color: black;
+            }
+        </style>
+        <!-- Classes are not required to be unique, so you can use the same class on as many elements as you want.-->
+
+
+
+        <!-- Id selectors are similar to class selector, they select element with given ID-->
+        <div id="id-selector">This is an ID selector</div>
+
+        <style>
+        /* The syntax for id selector is hastag immediately followed by the case-sensitive value of the ID attribute*/
+            #id-selector{
+                background-color: white;
+                color: aqua;
+            }
+        </style>
+
+
+
+        <!-- If two selectors has some same declarations, instead of writting those declarations twice, we can group the two selectors
+            to have the same attribute-->
+        <div class="group-1">Group 1 example</div>
+        <div class="group-2">Group 2 example</div>
+
+        <style>
+        /* We can group "group-1" and "group-2" class as a comma-separated list. In this list, we can list all declaration that is shared
+            between the two class to cut down on repetition*/
+            .group-1, .group-2{
+                color: black;
+                background-color: white;
+            }
+
+        /* After we can make any unique declaration like normal*/
+            .group-1{
+                font-size:large;
+            }
+
+            .group-2{
+                font-size:medium;
+            }
+        </style>
+
+
+
+        <!-- You can also chain selectors as a list without any separation-->
+        <div class="chain-selector example-1">Chain selector</div>
+        <div class="chain-selector example-2">Chain selector</div>
+
+        <style>
+        /* Let's say we want to select elements with both chain-selector and example-1 class, we can do this as below by writting two classes
+            right next to each others normally with no space between them*/
+            .chain-selector.example-1{
+                font-size: larger;
+            }
+            .chain-selector{
+                background-color: white;
+            }
+            .example-1{
+                color: blue;
+            }
+        </style>
+        <!-- This also work with id selector the same as class selector-->
+        <div class="chain-selector" id="example-3">Chain selector</div>
+
+        <style>
+            .chain-selector#example-3{
+                font-size:small;
+            }
+        </style>
+        <!-- Note that we can't chain more than two type of selector like "div" and "p" just because the syntax for them is 'div' and 'p'
+            and if you type this in, then you would get 'divp' which will find a litteral divp selector that doesn't exist-->
+
+        
+        
+        <!-- Combinator allows for the combination of multiple selectors differently from grouping and chaining. Combinator allows then usage
+            of relationship between selectors-->
+        <div class="combinator-1">
+                Combinator-1
+            <div class="combinator-2">
+                Combinator 2
+                <div class="combinator-3">Combinator 3</div>
+            </div>
+        </div>
+        
+        <div class="combinator-2">Combinator 2</div>
+
+        <style>
+        /* In this case, the selector will specifically look for elements that has 'combinator-2' class that is nested inside 'combinator-1
+            class, any declarations will only apply to this specific combination. This is done by having a space between the two classes with
+            the nester class first*/
+            .combinator-1 .combinator-2{
+                color: aqua;
+            }
+
+        /* Just like normal, these declaration will apply to all 'combinator-2' and 'combinator-3' classes, regardless if it is nested inside
+            <another> class or not*/
+            .combinator-2, .combinator-3{
+                background-color: white;
+            }
+        </style>
+
+
+
+
+
+        <!-- Some CSS elements that are used often-->
+        <div class="CSS elements">CSS elements</div>
+        <div class="element example">ELement example</div>
+
+
+        <style>
+            .CSS.elements{
+        /* 'color' is a common one that will change the color of the text*/
+                color: black;
+        /* 'background-color' change the color of the text background*/
+                background-color: white;
+            }
+
+        /*Both color and background color uses any keyword like'red, blue or white', but also HEX, RGB, and HSL value*/
+            .element.example{
+        /* Note only for rgb, hex and HSL value required the correct keyword of rgb, hex, or hsl before the value as bellow*/
+                color: rgb(100, 0, 127);
+                background-color: hsl(15,82,56);
+            }
+        </style>
+        
+        <style>
+            .CSS.element{
+        /* 'font-family' determines what font the text will uses. 'font-family' is a comma separated list, with each
+            font falling into one of two categories, either a "font family name" like "Times New Roman" below, or generic name like "serif"
+            below. If a browser cannot find or does not support the first font in a list, it will use teh next one, then the next one and so 
+            on*/
+                font-family:'Times New Roman', Times, serif;
+
+        /* 'font-size' will set the size of the font*/
+                font-size: 22px;
+
+        /* 'font-weight' affects the boldness of the text. The declaration for this element can be words like 'bold' or a value between 1 and
+            1000*/
+                font-weight: 600;
+
+        /* 'text-align' will align text horizontally within an element using common keyword*/
+                text-align-last: center;
+        
+        /* By default, an <img> element will have the same size as the image's file. If you want to adjust the size of the image without causing
+            it to lose its proportions, you would use a value of 'auto' for the height property and adjust the width value
+            }
+        </style>
+
+
+
 
     </body>
+    
 </html>
